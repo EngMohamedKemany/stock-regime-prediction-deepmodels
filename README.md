@@ -1,50 +1,81 @@
-## **Stock Market Regime Prediction Using Deep Learning and Hybrid Models**
+## **Hybrid Deep Learning for Stock Market Prediction: A Comparative Study**
 
-This repository contains the code, experiments, and analysis for a data science dissertation focused on **predicting stock market regimes** using **log‑price data**, **LSTM models**, and **hybrid deep learning architectures**. The project evaluates how well different model types classify **bull** and **bear** market phases and handle regime transitions in financial time series.
+This repository contains the full implementation, experiments, and analysis for the dissertation **“Hybrid Deep Learning for Stock Market Prediction: A Comparative Study of Modern Forecasting Architectures.”** It evaluates how standalone **LSTM** and hybrid **CNN‑LSTM** models perform in forecasting S&P 500 log‑prices and predicting **bull/bear market regimes** using walk‑forward expanding window validation.
 
 ---
 
 ## **📂 Project Structure**
-- `data/` — Raw and processed log‑price datasets with regime labels  
-- `notebooks/` — Jupyter notebooks for preprocessing, modeling, and evaluation  
-- `models/` — LSTM and hybrid model architectures  
-- `scripts/` — Training, testing, and visualization scripts  
-- `results/` — Metrics, plots, and comparative analysis outputs  
-- `utils/` — Helper functions for feature engineering and regime annotation  
+- `data/` — S&P 500 OHLCV data (2006–2026), engineered features, SMA‑200 regime labels  
+- `preprocessing/` — Cleaning, scaling, log‑transformations, sliding‑window sequence generation  
+- `features/` — Technical indicators (SMA, EMA, RSI, MACD, Bollinger Bands, volatility, volume‑based indicators)  
+- `models/` — ARIMA baseline, LSTM architecture, CNN‑LSTM hybrid architecture  
+- `training/` — Scripts for regression and classification training  
+- `walk_forward/` — Custom expanding‑window validation implementation  
+- `results/` — Regression metrics, classification metrics, confusion matrices, ROC curves, bar charts  
+- `notebooks/` — Full experimental workflow and analysis  
+- `figures/` — Dissertation‑ready plots and diagrams  
 
 ---
 
 ## **🔍 Project Overview**
-- Log‑price transformation applied to financial time series  
-- Bull/Bear regimes labeled using market direction and volatility  
-- Baseline **LSTM models** trained for sequence prediction  
-- **Hybrid models** combining deep learning with classical/statistical components  
-- Comparative evaluation across multiple metrics and market phases  
+This study investigates two predictive tasks:
+
+### **1. Regression (Exploratory Phase)**  
+Forecasting log‑transformed S&P 500 closing prices using:  
+- **ARIMA** (statistical baseline)  
+- **LSTM**  
+- **CNN‑LSTM hybrid**
+
+### **2. Classification (Core Phase)**  
+Predicting **bull vs. bear regimes** using SMA‑200 directional labeling.  
+Models evaluated:  
+- **LSTM**  
+- **CNN‑LSTM**
+
+The hybrid model is tested to determine whether CNN‑based local feature extraction improves temporal modeling and directional accuracy.
 
 ---
 
 ## **📊 Evaluation Metrics**
+### **Regression**
+- RMSE  
+- MAE  
+- MAPE  
+
+### **Classification**
 - Accuracy  
+- Precision  
+- Recall  
+- Specificity  
 - F1‑Score  
-- Confusion Matrix  
-- Regime‑specific performance (bull vs. bear)  
-- Transition detection analysis  
+- MCC  
+- ROC‑AUC  
+
+Walk‑forward expanding window validation is used to simulate realistic market conditions and avoid data leakage.
 
 ---
 
-## **🎯 Objectives**
-- Assess how deep learning and hybrid models capture market dynamics  
-- Compare predictive stability across regimes  
-- Analyze strengths and limitations of each model family  
+## **🎯 Key Objectives**
+- Compare standalone LSTM vs. hybrid CNN‑LSTM  
+- Assess numerical vs. directional prediction performance  
+- Evaluate model stability across multiple walk‑forward folds  
+- Determine whether hybrid architectures justify their computational cost  
 
 ---
 
 ## **📈 Outputs**
-- Model predictions and regime plots  
-- Performance comparisons  
-- Dissertation‑ready figures and tables  
+- Predicted vs. actual price plots  
+- Confusion matrices  
+- ROC curves  
+- Bar charts comparing all metrics  
+- Walk‑forward fold performance summaries  
+- Full discussion of findings and implications  
 
 ---
 
 ## **📝 Citation**
-If you use this repository, please cite the dissertation or reference this work appropriately.
+If referencing this work, please cite the dissertation:
+
+**Mohamed Mohieldin Mohamed Elkemany (2026).  
+Hybrid Deep Learning for Stock Market Prediction: A Comparative Study of Modern Forecasting Architectures.  
+University of East London.**
